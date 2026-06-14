@@ -630,6 +630,62 @@ a {
     color: #ff6700;
 }
 
+.service-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.service-item {
+    padding: 24px;
+    background: #fff;
+    border-left: 4px solid #ff6700;
+}
+
+.service-item h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.service-item p {
+    margin: 0;
+    color: #777;
+    line-height: 1.7;
+}
+
+.buy-guide {
+    margin-top: 28px;
+    padding: 30px;
+    background: #fff;
+}
+
+.buy-guide h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.guide-grid h3 {
+    margin: 0 0 10px;
+    color: #ff6700;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.guide-grid p {
+    margin: 0;
+    color: #666;
+    line-height: 1.8;
+}
+
 .placeholder-section {
     background: #fff;                 /* 白色背景 */
     padding: 40px;                    /* 内边距 */
@@ -655,4 +711,89 @@ a {
     color: #666;                      /* 中灰色文字 */
     text-align: center;               /* 文字居中 */
     background: #fff;                 /* 白色背景 */
+}
+
+@media (max-width: 900px) {
+    .nav-box,
+    .search-box,
+    .home-hero,
+    .detail-box,
+    .login-page,
+    .cart-total {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+
+    .nav-box {
+        gap: 14px;
+        padding: 14px 0;
+    }
+
+    .main-nav,
+    .filter-tabs {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .search-box {
+        gap: 18px;
+        padding: 18px 0;
+    }
+
+    .search-form,
+    .login-form {
+        width: 100%;
+    }
+
+    .category-menu,
+    .detail-image {
+        width: 100%;
+    }
+
+    .product-grid,
+    .service-section,
+    .guide-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-box,
+    .login-page {
+        padding: 32px;
+    }
+
+    .cart-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .cart-head {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .product-grid,
+    .service-section,
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner {
+        padding: 46px 28px;
+    }
+
+    .hero-banner h1 {
+        font-size: 32px;
+    }
+
+    .detail-box,
+    .login-page,
+    .cart-box {
+        padding: 24px;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
 }
