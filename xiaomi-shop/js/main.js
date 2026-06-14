@@ -78,3 +78,27 @@ if (loginForm) {
         loginMessage.textContent = "登录信息填写完成，可以继续完善后端功能";
     });
 }
+
+var filterLinks = document.querySelectorAll(".filter-tabs a");
+var productListCards = document.querySelectorAll(".product-list .product-card");
+
+filterLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var filter = link.dataset.filter;
+
+        filterLinks.forEach(function (item) {
+            item.classList.remove("active");
+        });
+        link.classList.add("active");
+
+        productListCards.forEach(function (card) {
+            if (filter === "all" || card.dataset.category === filter) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
