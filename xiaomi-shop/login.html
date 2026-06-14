@@ -1,0 +1,53 @@
+<!-- 文档类型声明：告诉浏览器这是 HTML5 文档 -->
+<!DOCTYPE html>
+<!-- 页面根元素，lang="zh-CN" 声明语言为简体中文，利于SEO和屏幕阅读器 -->
+<html lang="zh-CN">
+<head>
+    <!-- 字符编码设为 UTF-8，保证中文正常显示 -->
+    <meta charset="UTF-8">
+    <!-- viewport 视口设置：宽度等于设备宽度，初始缩放 1.0，适配移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 浏览器标签页标题 -->
+    <title>小米商城 - 登录</title>
+    <!-- 引入外部 CSS 样式表，复用整个站点的统一样式 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ===== 顶部导航栏：黑色背景，复刻小米商城顶栏 ===== -->
+    <header class="site-header">
+        <!-- container 限制最大宽度并居中，nav-box 用 flex 让 logo 和导航左右分布 -->
+        <div class="container nav-box">
+            <!-- Logo 链接，点击跳回首页 -->
+            <a class="logo" href="index.html">小米商城</a>
+            <!-- 主导航菜单，用 <nav> 语义化标签包裹 -->
+            <nav class="main-nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">全部商品</a>
+                <a href="detail.html">商品详情</a>
+                <a href="cart.html">购物车</a>
+                <!-- 当前页是登录页，链接保留但不加 active 类（可后续加高亮） -->
+                <a href="login.html">登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== 页面主体内容区 ===== -->
+    <main class="container page-main">
+        <!-- placeholder-section：临时占位样式，后续替换为真正的登录表单 -->
+        <section class="placeholder-section">
+            <h1>登录页</h1>
+            <!-- 占位文字，说明后续要放什么内容 -->
+            <p>这里后续放用户名、密码输入框和表单校验。</p>
+        </section>
+    </main>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="site-footer">
+        <!-- 简单的页脚文案 -->
+        <div class="container">小米商城前端仿站实训项目</div>
+    </footer>
+
+    <!-- 引入外部 JavaScript 文件（当前为空或通用脚本） -->
+    <script src="js/main.js"></script>
+</body>
+</html>
