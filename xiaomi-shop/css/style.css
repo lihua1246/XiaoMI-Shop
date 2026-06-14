@@ -235,6 +235,11 @@ a {
     background: #f3f3f3;
 }
 
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .product-card h3 {
     margin: 0 0 8px;
     font-size: 18px;
@@ -325,6 +330,11 @@ a {
     color: #999;
     font-size: 22px;
     background: #f3f3f3;
+}
+
+.big-product-img img {
+    width: 85%;
+    max-height: 360px;
 }
 
 .detail-info {
@@ -463,6 +473,11 @@ a {
     height: 80px;
     color: #999;
     background: #f3f3f3;
+}
+
+.cart-img img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .cart-product h3 {
