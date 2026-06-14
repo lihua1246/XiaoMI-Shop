@@ -31,13 +31,27 @@
         </div>
     </header>
 
-    <!-- ===== 页面主体内容区 ===== -->
     <main class="container page-main">
-        <!-- placeholder-section：临时占位样式，后续替换为真正的登录表单 -->
-        <section class="placeholder-section">
-            <h1>登录页</h1>
-            <!-- 占位文字，说明后续要放什么内容 -->
-            <p>这里后续放用户名、密码输入框和表单校验。</p>
+        <section class="login-page">
+            <div class="login-intro">
+                <h1>欢迎登录小米商城</h1>
+                <p>登录后可以查看购物车、管理订单，并继续浏览喜欢的商品。</p>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <h2>账号登录</h2>
+
+                <label for="username">用户名</label>
+                <input id="username" type="text" placeholder="请输入用户名或手机号">
+
+                <label for="password">密码</label>
+                <input id="password" type="password" placeholder="请输入密码">
+
+                <p class="form-message" id="loginMessage"></p>
+
+                <button type="submit">登录</button>
+                <p class="register-text">还没有账号？<a href="login.html">立即注册</a></p>
+            </form>
         </section>
     </main>
 

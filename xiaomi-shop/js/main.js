@@ -59,3 +59,22 @@ cartItems.forEach(function (item) {
 });
 
 updateCartTotal();
+
+var loginForm = document.querySelector("#loginForm");
+var loginMessage = document.querySelector("#loginMessage");
+
+if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var username = document.querySelector("#username").value.trim();
+        var password = document.querySelector("#password").value.trim();
+
+        if (username === "" || password === "") {
+            loginMessage.textContent = "用户名和密码不能为空";
+            return;
+        }
+
+        loginMessage.textContent = "登录信息填写完成，可以继续完善后端功能";
+    });
+}
