@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# XiaoMI-Shop
 
 小米商城前端仿站实训项目，用于完成两周前端实训页面开发练习。项目采用原生 HTML、CSS 和 JavaScript 编写，重点训练静态页面结构搭建、公共样式复用、页面跳转和基础交互组织。
@@ -71,3 +72,7 @@ XiaoMI-Shop/
 - 完成商品详情页图片、价格、规格和购买按钮。
 - 完成购物车商品数量、价格统计和删除交互。
 - 完成登录页表单样式和基础校验。
+=======
+# XiaoMI-Shop
+Teamwork about HTML,CSS，JS
+>>>>>>> 81f0440 (Initial commit)
