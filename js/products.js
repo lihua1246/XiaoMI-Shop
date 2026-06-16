@@ -104,6 +104,6 @@ if (goodsContainer) {
             return;
         }
 
-        alert(`进入【${button.dataset.product}】商品详情页`);
+        alert(`进入「${button.dataset.product}」商品详情页`);
     });
 }
