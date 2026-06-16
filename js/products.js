@@ -1,56 +1,56 @@
 const goodsData = [
     {
         name: 'Xiaomi 15',
-        desc: '旗舰影像手机',
+        description: '旗舰影像手机',
         price: '3999 元起',
         type: 'phone',
         label: '15'
     },
     {
         name: 'Redmi K80',
-        desc: '性能旗舰手机',
+        description: '性能旗舰手机',
         price: '2499 元起',
         type: 'phone',
         label: 'K80'
     },
     {
         name: 'Redmi Note 14',
-        desc: '长续航大屏手机',
+        description: '长续航大屏手机',
         price: '1399 元起',
         type: 'phone',
         label: 'N14'
     },
     {
         name: '小米电视 S Pro',
-        desc: '高刷智能电视',
+        description: '高刷智能电视',
         price: '2999 元起',
         type: 'tv',
         label: 'TV'
     },
     {
         name: 'Redmi Book Pro',
-        desc: '轻薄办公笔记本',
+        description: '轻薄办公笔记本',
         price: '4599 元起',
         type: 'laptop',
         label: 'Book'
     },
     {
         name: 'Xiaomi Pad 7',
-        desc: '学习娱乐平板',
+        description: '学习娱乐平板',
         price: '1999 元起',
         type: 'device',
         label: 'Pad'
     },
     {
         name: '米家空调',
-        desc: '节能智能空调',
+        description: '节能智能空调',
         price: '2299 元起',
         type: 'home',
-        label: 'AC'
+        label: '空调'
     },
     {
         name: '小米手表',
-        desc: '运动健康助手',
+        description: '运动健康助手',
         price: '699 元起',
         type: 'device',
         label: 'Watch'
@@ -60,7 +60,7 @@ const goodsData = [
 const goodsContainer = document.getElementById('goodsContainer');
 const tabs = document.querySelectorAll('.tab-item');
 
-function renderGoods(list) {
+function displayGoods(list) {
     if (!goodsContainer) {
         return;
     }
@@ -70,19 +70,22 @@ function renderGoods(list) {
         return;
     }
 
-    goodsContainer.innerHTML = list.map((item) => `
-        <article class="goods-card" data-type="${item.type}">
-            <div class="goods-visual" aria-hidden="true">${item.label}</div>
-            <h2 class="goods-name">${item.name}</h2>
-            <p class="goods-desc">${item.desc}</p>
-            <div class="goods-price">${item.price}</div>
-            <button class="detail-btn" type="button" data-product="${item.name}">查看详情</button>
-        </article>
-    `).join('');
+    let html = '';
+    for (let i = 0; i < list.length; i++) {
+        var item = list[i];
+        html += '<article class="goods-card" data-type="' + item.type + '">'
+            + '<div class="goods-visual" aria-hidden="true">' + item.label + '</div>'
+            + '<h2 class="goods-name">' + item.name + '</h2>'
+            + '<p class="goods-desc">' + item.description + '</p>'
+            + '<div class="goods-price">' + item.price + '</div>'
+            + '<button class="detail-btn" type="button" data-product="' + item.name + '">查看详情</button>'
+            + '</article>';
+    }
+    goodsContainer.innerHTML = html;
 }
 
 if (goodsContainer) {
-    renderGoods(goodsData);
+    displayGoods(goodsData);
 
     tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
@@ -94,7 +97,7 @@ if (goodsContainer) {
                 ? goodsData
                 : goodsData.filter((item) => item.type === selectType);
 
-            renderGoods(list);
+            displayGoods(list);
         });
     });
 
