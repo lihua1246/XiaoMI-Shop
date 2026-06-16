@@ -23,9 +23,37 @@
     <main class="container page-main">
         <section class="page-title">
             <h1>全部商品</h1>
+            <p>精选小米手机、电视、笔记本和智能生活产品。</p>
         </section>
 
-        <!-- 本页内容由对应负责人继续开发 -->
+        <section class="category-tabs" aria-label="商品分类">
+            <button class="tab-item active" type="button" data-type="all">全部</button>
+            <button class="tab-item" type="button" data-type="phone">手机</button>
+            <button class="tab-item" type="button" data-type="tv">电视</button>
+            <button class="tab-item" type="button" data-type="laptop">笔记本</button>
+            <button class="tab-item" type="button" data-type="home">家电</button>
+            <button class="tab-item" type="button" data-type="device">智能设备</button>
+        </section>
+
+        <section class="goods-list" id="goodsContainer" aria-live="polite"></section>
+
+        <section class="explain-area">
+            <h2>选购说明</h2>
+            <div class="explain-grid">
+                <article class="explain-item">
+                    <h3>手机产品</h3>
+                    <p>适合关注性能、拍照和日常使用体验的用户。</p>
+                </article>
+                <article class="explain-item">
+                    <h3>智能家电</h3>
+                    <p>适合家庭生活场景，可与智能设备形成联动。</p>
+                </article>
+                <article class="explain-item">
+                    <h3>穿戴设备</h3>
+                    <p>适合运动记录、健康提醒和日常消息查看。</p>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -33,5 +61,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
 </body>
 </html>
