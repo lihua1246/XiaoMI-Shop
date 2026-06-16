@@ -119,7 +119,7 @@ if (goodsContainer) {
     });
 
     goodsContainer.addEventListener('click', (event) => {
-        const button = event.target.closest('.detail-btn');
+        const button = event.target.closest('button.detail-btn');
         if (!button) {
             return;
         }
