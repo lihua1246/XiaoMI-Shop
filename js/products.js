@@ -13,6 +13,7 @@ const goodsData = [
         price: '2249 元起',
         type: 'phone',
         label: 'K80',
+        image: 'images/redmi-k80-main.png',
         detailUrl: 'detail2.html'
     },
     {
@@ -21,6 +22,7 @@ const goodsData = [
         price: '1349 元起',
         type: 'phone',
         label: 'N14',
+        image: 'images/redmi-note14-blue.png',
         detailUrl: 'detail3.html'
     },
     {
@@ -29,6 +31,7 @@ const goodsData = [
         price: '2699 元起',
         type: 'tv',
         label: 'TV',
+        image: 'images/xiaomi-tv-s-pro.png',
         detailUrl: 'detail4.html'
     },
     {
@@ -37,6 +40,7 @@ const goodsData = [
         price: '7299 元起',
         type: 'laptop',
         label: 'Book',
+        image: 'images/redmi-book-pro.png',
         detailUrl: 'detail5.html'
     },
     {
@@ -45,6 +49,7 @@ const goodsData = [
         price: '1999 元起',
         type: 'device',
         label: 'Pad',
+        image: 'images/xiaomi-pad7-blue.png',
         detailUrl: 'detail6.html'
     },
     {
@@ -79,11 +84,14 @@ function displayGoods(list) {
     let html = '';
     for (let i = 0; i < list.length; i++) {
         var item = list[i];
+        var visual = item.image
+            ? '<div class="goods-visual goods-visual-image"><img src="' + item.image + '" alt="' + item.name + '"></div>'
+            : '<div class="goods-visual" aria-hidden="true">' + item.label + '</div>';
         var detailControl = item.detailUrl
             ? '<a class="detail-btn" href="' + item.detailUrl + '">查看详情</a>'
             : '<button class="detail-btn" type="button" data-product="' + item.name + '">查看详情</button>';
         html += '<article class="goods-card" data-type="' + item.type + '">'
-            + '<div class="goods-visual" aria-hidden="true">' + item.label + '</div>'
+            + visual
             + '<h2 class="goods-name">' + item.name + '</h2>'
             + '<p class="goods-desc">' + item.description + '</p>'
             + '<div class="goods-price">' + item.price + '</div>'

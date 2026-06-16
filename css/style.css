@@ -379,6 +379,19 @@ a {
     width: 150px;
 }
 
+.goods-visual-image {
+    background: #f7f7f7;
+    overflow: hidden;
+    width: 170px;
+}
+
+.goods-visual-image img {
+    display: block;
+    max-height: 108px;
+    max-width: 92%;
+    object-fit: contain;
+}
+
 .goods-name {
     color: #222;
     font-size: 22px;
