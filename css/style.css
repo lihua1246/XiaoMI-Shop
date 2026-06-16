@@ -448,6 +448,21 @@ a {
     width: min(420px, 92%);
 }
 
+.big-product-img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 260px;
+    width: 100%;
+}
+
+.phone-img {
+    display: block;
+    max-height: 300px;
+    max-width: 92%;
+    object-fit: contain;
+}
+
 .detail-info h1 {
     color: #222;
     font-size: 34px;

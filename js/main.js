@@ -11,5 +11,12 @@ document.querySelectorAll('.option-list').forEach((optionList) => {
             item.classList.remove('active');
         });
         button.classList.add('active');
+
+        if (button.dataset.img) {
+            const detailImage = document.querySelector('.phone-img');
+            if (detailImage) {
+                detailImage.src = button.dataset.img;
+            }
+        }
     });
 });
