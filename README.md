@@ -15,12 +15,14 @@
 | --- | --- |
 | 首页 | `index.html` |
 | 商品列表 | `products.html` |
-| Xiaomi 15 详情 | `detail.html` |
-| Redmi K80 详情 | `detail2.html` |
-| Redmi Note 14 详情 | `detail3.html` |
-| 小米电视 S Pro 详情 | `detail4.html` |
-| Redmi Book Pro 详情 | `detail5.html` |
-| Xiaomi Pad 7 详情 | `detail6.html` |
+| Xiaomi 15 详情 | `detail-xiaomi-15.html` |
+| Redmi K80 详情 | `detail-redmi-k80.html` |
+| Redmi Note 14 详情 | `detail-redmi-note-14.html` |
+| 小米电视 S Pro 详情 | `detail-xiaomi-tv-s-pro.html` |
+| Redmi Book Pro 详情 | `detail-redmi-book-pro.html` |
+| Xiaomi Pad 7 详情 | `detail-xiaomi-pad-7.html` |
+| 米家空调详情 | `detail-mijia-ac.html` |
+| 小米手表详情 | `detail-xiaomi-watch.html` |
 | 购物车 | `cart.html` |
 | 登录 | `login.html` |
 
@@ -30,12 +32,14 @@
 XiaoMI-Shop/
 ├── index.html
 ├── products.html
-├── detail.html
-├── detail2.html
-├── detail3.html
-├── detail4.html
-├── detail5.html
-├── detail6.html
+├── detail-xiaomi-15.html
+├── detail-redmi-k80.html
+├── detail-redmi-note-14.html
+├── detail-xiaomi-tv-s-pro.html
+├── detail-redmi-book-pro.html
+├── detail-xiaomi-pad-7.html
+├── detail-mijia-ac.html
+├── detail-xiaomi-watch.html
 ├── cart.html
 ├── login.html
 ├── css/
@@ -75,6 +79,6 @@ XiaoMI-Shop/
 ## 当前整合状态
 
 - 首页和商品列表页已接入基础展示。
-- 商品列表前 6 个商品已连接到对应详情页。
-- 商品详情页已接入真实商品图片素材，Xiaomi 15 暂无图片素材，当前保留文字视觉占位。
+- 商品列表 8 个商品已连接到对应详情页。
+- 商品详情页已接入真实商品图片素材，详情页和图片文件使用语义化命名。
 - `js/main.js` 保持公共交互逻辑简洁，避免混入其他成员未完成页面的复杂脚本。
