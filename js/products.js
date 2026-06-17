@@ -5,6 +5,7 @@ const goodsData = [
         price: '3999 元起',
         type: 'phone',
         label: '15',
+        image: 'images/小米15黑.png',
         detailUrl: 'detail.html'
     },
     {
