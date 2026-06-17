@@ -64,7 +64,9 @@ const goodsData = [
         description: '运动健康助手',
         price: '699 元起',
         type: 'device',
-        label: 'Watch'
+        label: 'Watch',
+        image: 'images/手表白.png',
+        detailUrl: 'detail8.html'
     }
 ];
 
