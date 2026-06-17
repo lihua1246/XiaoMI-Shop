@@ -874,10 +874,10 @@ a {
 /* ========== login page ========== */
 
 .login-body {
-    background-attachment: fixed;
-    background-image: url("../images/45890f461b8de74d192efe0465908b15.png");
-    background-position: center;
-    background-size: cover;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(255, 103, 0, 0.16), transparent 28%),
+        linear-gradient(135deg, #f4f4f4 0%, #ececec 100%);
+    min-height: 100vh;
 }
 
 .login-page {
@@ -891,21 +891,46 @@ a {
 }
 
 .login-left {
-    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.72)),
+        url("../images/login-hero-tech.png") 34% center / cover no-repeat;
     color: #fff;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
     padding: 60px 30px;
+    position: relative;
     text-align: center;
+}
+
+.login-left::after {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    content: "";
+    height: 86px;
+    position: absolute;
+    right: 42px;
+    top: 42px;
+    width: 86px;
 }
 
 .login-left h1 {
     font-size: 36px;
-    margin: 100px 0 0;
+    margin: 0;
+    position: relative;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    z-index: 1;
 }
 
 .login-left p {
     font-size: 18px;
     margin: 10px 0 0;
+    position: relative;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.32);
+    z-index: 1;
 }
 
 .login-right {
@@ -1135,5 +1160,37 @@ a {
 
     .cart-empty {
         padding: 48px 16px;
+    }
+
+    .login-page {
+        flex-direction: column;
+        height: auto;
+        margin: 28px auto;
+    }
+
+    .login-left {
+        flex: none;
+        min-height: 240px;
+        padding: 48px 24px;
+    }
+
+    .login-left::after {
+        height: 58px;
+        right: 24px;
+        top: 24px;
+        width: 58px;
+    }
+
+    .login-left h1 {
+        font-size: 30px;
+    }
+
+    .login-left p {
+        font-size: 16px;
+    }
+
+    .login-right {
+        padding: 32px 24px;
+        width: 100%;
     }
 }
