@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米商城 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-box">
+            <a class="logo" href="index.html">小米商城</a>
+            <nav class="main-nav">
+                <a class="active" href="index.html">首页</a>
+                <a href="products.html">全部商品</a>
+                <a href="detail.html">商品详情</a>
+                <a href="cart.html">购物车</a>
+                <a href="login.html">登录</a>
+                <!--上面的功能是为了跳转到其他页面的-->
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <section class="top-search">
+    <!--这个是搜索功能，有搜索输入框和搜索按钮-->
+        <div class="container search-box">
+            <div class="brand-title">Xiaomi Shop</div>
+            <div class="search-form">
+                <input type="text" placeholder="搜索手机、电视、笔记本">
+                <button type="button">搜索</button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!--这里的设计思路就是经典的左侧导航栏＋右主推-->
+   
+        <main class="container page-main">
+        
+        <section class="home-hero">
+            <!-- 左侧竖排商品分类菜单，每个链接指向对应的产品列表页 -->
+            <div class="category-menu">
+                <a href="products.html">手机</a>
+                <a href="products.html">电视</a>
+                <a href="products.html">笔记本</a>
+                <a href="products.html">家电</a>
+                <a href="products.html">智能穿戴</a>
+                <a href="products.html">生活配件</a>
+            </div>
+            <!-- 右侧主视觉横幅：展示当前主推新品的核心卖点 -->
+            <div class="hero-banner">
+                <p class="hero-label">新品推荐</p>
+                <h1>Xiaomi 15 系列</h1>
+                <p>高性能旗舰手机，影像、屏幕和续航全面升级。</p>
+                <!-- "查看详情"按钮，跳转到商品详情页 -->
+                <a class="hero-button" href="detail.html">查看详情</a>
+                <!--超链接可以后续跳转让用户查看详情-->
+            </div>
+        </section>
+
+        <section class="product-section">
+            <div class="section-title">
+                <h2>热门商品</h2>
+                <a href="products.html">查看全部</a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img"><img src="images/phone.svg" alt="Xiaomi 15"></div>
+                    <h3>Xiaomi 15</h3>
+                    <p>新一代旗舰手机</p>
+                    <strong>3999 元起</strong>
+                    <a href="detail.html">查看详情</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/redmi.svg" alt="Redmi K80"></div>
+                    <h3>Redmi K80</h3>
+                    <p>高性能性价比手机</p>
+                    <strong>2499 元起</strong>
+                    <a href="detail.html">查看详情</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/tv.svg" alt="小米电视 S Pro"></div>
+                    <h3>小米电视 S Pro</h3>
+                    <p>大屏高清智能电视</p>
+                    <strong>2999 元起</strong>
+                    <a href="detail.html">查看详情</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"><img src="images/laptop.svg" alt="Redmi Book Pro"></div>
+                    <h3>Redmi Book Pro</h3>
+                    <p>轻薄办公笔记本</p>
+                    <strong>4599 元起</strong>
+                    <a href="detail.html">查看详情</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section">
+            <div class="service-item">
+                <h3>7 天无理由退货</h3>
+                <p>支持符合条件的商品退换服务</p>
+            </div>
+            <div class="service-item">
+                <h3>满 69 元包邮</h3>
+                <p>常用配件和数码产品轻松购买</p>
+            </div>
+            <div class="service-item">
+                <h3>门店自提</h3>
+                <p>可选择附近门店自提或售后服务</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">小米商城前端仿站实训项目</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

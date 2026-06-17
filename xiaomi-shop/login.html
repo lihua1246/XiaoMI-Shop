@@ -1,0 +1,67 @@
+<!-- 文档类型声明：告诉浏览器这是 HTML5 文档 -->
+<!DOCTYPE html>
+<!-- 页面根元素，lang="zh-CN" 声明语言为简体中文，利于SEO和屏幕阅读器 -->
+<html lang="zh-CN">
+<head>
+    <!-- 字符编码设为 UTF-8，保证中文正常显示 -->
+    <meta charset="UTF-8">
+    <!-- viewport 视口设置：宽度等于设备宽度，初始缩放 1.0，适配移动端 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 浏览器标签页标题 -->
+    <title>小米商城 - 登录</title>
+    <!-- 引入外部 CSS 样式表，复用整个站点的统一样式 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ===== 顶部导航栏：黑色背景，复刻小米商城顶栏 ===== -->
+    <header class="site-header">
+        <!-- container 限制最大宽度并居中，nav-box 用 flex 让 logo 和导航左右分布 -->
+        <div class="container nav-box">
+            <!-- Logo 链接，点击跳回首页 -->
+            <a class="logo" href="index.html">小米商城</a>
+            <!-- 主导航菜单，用 <nav> 语义化标签包裹 -->
+            <nav class="main-nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">全部商品</a>
+                <a href="detail.html">商品详情</a>
+                <a href="cart.html">购物车</a>
+                <!-- 当前页是登录页，链接保留但不加 active 类（可后续加高亮） -->
+                <a class="active" href="login.html">登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-main">
+        <section class="login-page">
+            <div class="login-intro">
+                <h1>欢迎登录小米商城</h1>
+                <p>登录后可以查看购物车、管理订单，并继续浏览喜欢的商品。</p>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <h2>账号登录</h2>
+
+                <label for="username">用户名</label>
+                <input id="username" type="text" placeholder="请输入用户名或手机号">
+
+                <label for="password">密码</label>
+                <input id="password" type="password" placeholder="请输入密码">
+
+                <p class="form-message" id="loginMessage"></p>
+
+                <button type="submit">登录</button>
+                <p class="register-text">还没有账号？<a href="login.html">立即注册</a></p>
+            </form>
+        </section>
+    </main>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="site-footer">
+        <!-- 简单的页脚文案 -->
+        <div class="container">小米商城前端仿站实训项目</div>
+    </footer>
+
+    <!-- 引入外部 JavaScript 文件（当前为空或通用脚本） -->
+    <script src="js/main.js"></script>
+</body>
+</html>

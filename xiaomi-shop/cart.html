@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米商城 - 购物车</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-box">
+            <a class="logo" href="index.html">小米商城</a>
+            <nav class="main-nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">全部商品</a>
+                <a href="detail.html">商品详情</a>
+                <a class="active" href="cart.html">购物车</a>
+                <a href="login.html">登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-main">
+        <section class="cart-box">
+            <h1>我的购物车</h1>
+
+            <div class="cart-table">
+                <div class="cart-row cart-head">
+                    <div>商品信息</div>
+                    <div>单价</div>
+                    <div>数量</div>
+                    <div>小计</div>
+                </div>
+
+                <div class="cart-row cart-item" data-price="3999">
+                    <div class="cart-product">
+                        <div class="cart-img"><img src="images/phone.svg" alt="Xiaomi 15"></div>
+                        <div>
+                            <h3>Xiaomi 15</h3>
+                            <p>12GB + 256GB 黑色</p>
+                        </div>
+                    </div>
+                    <div class="cart-price">3999 元</div>
+                    <div class="quantity-box">
+                        <button class="minus-btn" type="button">-</button>
+                        <span class="quantity">1</span>
+                        <button class="plus-btn" type="button">+</button>
+                    </div>
+                    <div class="subtotal">3999 元</div>
+                </div>
+
+                <div class="cart-row cart-item" data-price="699">
+                    <div class="cart-product">
+                        <div class="cart-img"><img src="images/watch.svg" alt="小米手表"></div>
+                        <div>
+                            <h3>小米手表</h3>
+                            <p>运动健康助手</p>
+                        </div>
+                    </div>
+                    <div class="cart-price">699 元</div>
+                    <div class="quantity-box">
+                        <button class="minus-btn" type="button">-</button>
+                        <span class="quantity">1</span>
+                        <button class="plus-btn" type="button">+</button>
+                    </div>
+                    <div class="subtotal">699 元</div>
+                </div>
+            </div>
+
+            <div class="cart-total">
+                <a href="products.html">继续购物</a>
+                <div>
+                    合计：<strong id="totalPrice">4698 元</strong>
+                    <button type="button">去结算</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">小米商城前端仿站实训项目</div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

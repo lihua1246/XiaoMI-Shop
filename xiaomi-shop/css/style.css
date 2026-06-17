@@ -1,0 +1,799 @@
+* {
+    box-sizing: border-box;           /* 所有元素使用 border-box 盒模型，宽高包含 padding 和 border */
+}
+
+/* ===== 页面基础样式 ===== */
+body {
+    margin: 0;                        /* 清除浏览器默认外边距 */
+    font-family: Arial, "Microsoft YaHei", sans-serif; /* 字体栈：优先 Arial，回退到微软雅黑、无衬线 */
+    color: #333;                      /* 全局文字颜色：深灰 */
+    background: #f5f5f5;              /* 全局背景色：浅灰 */
+}
+
+/* ===== 链接重置 ===== */
+a {
+    color: inherit;                   /* 链接颜色继承父元素，不再显示默认蓝色 */
+    text-decoration: none;            /* 移除链接下划线 */
+}
+
+/* ===== 通用容器：内容居中并限制宽度 ===== */
+.container {
+    width: 1200px;                    /* 固定宽度 1200px，适配大屏 */
+    max-width: 92%;                   /* 小屏下最大宽度不超过屏幕 92%，防止溢出 */
+    margin: 0 auto;                   /* 上下无外边距，左右自动居中 */
+}
+
+/* ===== 顶部导航头部（黑色底栏） ===== */
+.site-header {
+    background: #333;                 /* 深灰/黑色背景 */
+    color: #fff;                      /* 白色文字 */
+}
+
+/* 导航内部弹性布局盒子 */
+.nav-box {
+    display: flex;                    /* 启用弹性布局 */
+    align-items: center;              /* 垂直方向居中对齐 */
+    justify-content: space-between;   /* 水平方向两端对齐（logo 在左，导航链接在右） */
+    height: 56px;                     /* 固定导航栏高度 */
+}
+
+/* Logo 文字样式 */
+.logo {
+    font-size: 20px;                  /* Logo 文字大小 */
+    font-weight: bold;                /* 加粗 */
+    color: #ff6700;                   /* 小米品牌橙色 */
+}
+
+/* 主导航链接容器 */
+.main-nav {
+    display: flex;                    /* 弹性布局，让导航项横向排列 */
+    gap: 24px;                        /* 各导航项之间间距 24px */
+    font-size: 14px;                  /* 导航文字大小 */
+}
+
+/* 导航链接悬停效果 */
+.main-nav a:hover,
+.main-nav .active {
+    color: #ff6700;                   /* 鼠标悬停时变为品牌橙色 */
+}
+
+/*搜索栏区域*/
+
+.top-search {
+    background: #fff;                 
+    border-bottom: 1px solid #eee;    /* 底部浅灰色分割线 */
+}
+
+/* 搜索栏内部弹性布局盒子 */
+/*让左边品牌名和右边搜索框横向排列，并且两边分开*/
+.search-box {
+    display: flex;                    /* 启用弹性布局 */
+    align-items: center;              /* 垂直居中 */
+    justify-content: space-between;   /* 水平两端对齐（品牌名在左，搜索框在右） */
+    height: 82px;                     /* 搜索栏高度 */
+}
+
+/* 品牌标题（搜索栏左侧的 "小米商城" 文字） */
+.brand-title {
+    font-size: 26px;                  /* 较大字号 */
+    font-weight: bold;                /* 加粗 */
+    color: #ff6700;                   /* 品牌橙色 */
+}
+
+/* 搜索表单容器 */
+.search-form {
+    display: flex;                    /* 弹性布局，让输入框和按钮并排 */
+    width: 420px;                     /* 固定宽度 */
+    height: 40px;                     /* 固定高度 */
+}
+
+/* 搜索输入框 */
+.search-form input {
+    flex: 1;                          /* 占据剩余空间（撑满） */
+    padding: 0 12px;                  /* 左右内边距 12px */
+    border: 1px solid #ddd;           /* 浅灰边框 */
+    border-right: 0;                  /* 去掉右边框，与按钮无缝衔接 */
+    outline: none;                    /* 移除浏览器默认聚焦轮廓线 */
+}
+
+/* 搜索输入框聚焦状态 */
+.search-form input:focus {
+    border-color: #ff6700;            /* 聚焦时边框变为品牌橙色 */
+}
+
+/* 搜索按钮 */
+.search-form button {
+    width: 80px;                      /* 固定宽度 */
+    color: #fff;                      /* 白色文字 */
+    cursor: pointer;                  /* 鼠标悬停显示手型指针 */
+    background: #ff6700;              /* 品牌橙色背景 */
+    border: 1px solid #ff6700;        /* 与背景同色边框 */
+}
+
+/* ===== 页面主内容区 ===== */
+.page-main {
+    min-height: 560px;                /* 最小高度，保证即使内容少也有足够高度 */
+    padding: 32px 0;                  /* 上下内边距 32px，拉开与头尾距离 */
+}
+
+/* =====首屏核心展示区===== */
+.home-hero {
+    display: flex;                    /* 弹性布局：左侧分类菜单 + 右侧主推横幅并排 */
+    min-height: 420px;                /* 最小高度，保证视觉冲击力 */
+    background: #fff;                 /* 白色背景 */
+}
+
+/* 左侧分类菜单 */
+.category-menu {
+    width: 240px;                     /* 固定宽度 240px */
+    padding: 24px 0;                  /* 上下内边距 24px */
+    background: #3a3a3a;              /* 深灰背景，与头部区分层次 */
+}
+
+/* 分类菜单中的每一项链接 */
+.category-menu a {
+    display: block;                   /* 块级显示，每个链接独占一行 */
+    padding: 16px 28px;               /* 上下 16px、左右 28px 内边距，增大点击区域 */
+    color: #fff;                      /* 白色文字 */
+    font-size: 15px;                  /* 字号 */
+}
+
+/* 分类菜单悬停效果 */
+.category-menu a:hover {
+    background: #ff6700;              /* 鼠标悬停时整行背景变为品牌橙色 */
+}
+
+/* 右侧主推横幅 */
+.hero-banner {
+    flex: 1;                          /* 占据剩余所有空间（总宽 - 240px 菜单宽） */
+    padding: 72px 80px;               /* 较大内边距，让内容不贴边 */
+    background: linear-gradient(120deg, #f7f7f7, #fff1e8); /* 对角渐变背景：浅灰 → 暖白 */
+}
+
+/* 横幅小标签（"新品推荐"） */
+.hero-label {
+    margin: 0 0 12px;                 /* 底部 12px 间距 */
+    color: #ff6700;                   /* 品牌橙色 */
+    font-weight: bold;                /* 加粗 */
+}
+
+/* 横幅主标题（"Xiaomi 15 系列"） */
+.hero-banner h1 {
+    margin: 0 0 18px;                 /* 底部 18px 间距 */
+    font-size: 42px;                  /* 大字号，突出主标题 */
+    font-weight: normal;              /* 正常粗细，不用加粗 */
+}
+
+/* 横幅描述文字 */
+.hero-banner p {
+    max-width: 420px;                 /* 限制最大宽度，保持可读行长 */
+    margin: 0 0 26px;                 /* 底部 26px 间距 */
+    color: #666;                      /* 中灰色文字 */
+    line-height: 1.8;                 /* 行高 1.8 倍，提升可读性 */
+}
+
+/* "查看详情" 按钮 */
+.hero-button {
+    display: inline-block;            /* 行内块级，可设宽高但不会独占一行 */
+    padding: 12px 30px;               /* 按钮内边距 */
+    color: #fff;                      /* 白色文字 */
+    background: #ff6700;              /* 品牌橙色背景 */
+}
+
+/* ===== 占位内容区（产品列表页/详情页通用） ===== */
+.product-section {
+    margin-top: 28px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.section-title a {
+    color: #666;
+    font-size: 14px;
+}
+
+.section-title a:hover {
+    color: #ff6700;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);/*商品区域使用网格布局，一行分成 4 等份，所以 4 个商品卡片横向排列*/
+    gap: 18px;
+}
+
+.product-card {
+    padding: 24px 18px;
+    text-align: center;
+    background: #fff;
+    transition: 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.product-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    margin-bottom: 18px;
+    color: #999;
+    background: #f3f3f3;
+}
+
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.product-card p {
+    margin: 0 0 12px;
+    color: #777;
+    font-size: 14px;
+}
+
+.product-card strong {
+    display: block;
+    margin-bottom: 14px;
+    color: #ff6700;
+    font-size: 16px;
+}
+
+.product-card a {
+    display: inline-block;
+    padding: 8px 18px;
+    color: #ff6700;
+    border: 1px solid #ff6700;
+}
+
+.product-card a:hover {
+    color: #fff;
+    background: #ff6700;
+}
+
+.list-header {
+    margin-bottom: 18px;
+}
+
+.list-header h1 {
+    margin: 0 0 10px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.list-header p {
+    margin: 0;
+    color: #777;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+    padding: 18px;
+    background: #fff;
+}
+
+.filter-tabs a {
+    padding: 8px 18px;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.filter-tabs a:hover,
+.filter-tabs .active {
+    color: #fff;
+    background: #ff6700;
+    border-color: #ff6700;
+}
+
+.product-list {
+    margin-bottom: 12px;
+}
+
+.detail-box {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    background: #fff;
+}
+
+.detail-image {
+    width: 45%;
+}
+
+.big-product-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 420px;
+    color: #999;
+    font-size: 22px;
+    background: #f3f3f3;
+}
+
+.big-product-img img {
+    width: 85%;
+    max-height: 360px;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.detail-info h1 {
+    margin: 0 0 14px;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.detail-desc {
+    margin: 0 0 18px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.detail-price {
+    margin: 0 0 26px;
+    color: #ff6700;
+    font-size: 26px;
+}
+
+.option-group {
+    margin-bottom: 24px;
+}
+
+.option-group h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.option-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.option-btn {
+    min-width: 140px;
+    padding: 12px 16px;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.option-btn:hover,
+.option-btn.active {
+    color: #ff6700;
+    border-color: #ff6700;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.buy-button,
+.back-button {
+    display: inline-block;
+    padding: 14px 42px;
+}
+
+.buy-button {
+    color: #fff;
+    background: #ff6700;
+}
+
+.back-button {
+    color: #ff6700;
+    border: 1px solid #ff6700;
+}
+
+.detail-params {
+    margin-top: 28px;
+    padding: 32px 40px;
+    background: #fff;
+}
+
+.detail-params h2 {
+    margin: 0 0 16px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.detail-params ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #666;
+    line-height: 2;
+}
+
+.cart-box {
+    background: #fff;
+    padding: 32px 40px;
+}
+
+.cart-box h1 {
+    margin: 0 0 24px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.cart-table {
+    border-top: 1px solid #eee;
+}
+
+.cart-row {
+    display: grid;
+    grid-template-columns: 1.8fr 0.7fr 0.8fr 0.7fr;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-head {
+    color: #777;
+    font-size: 14px;
+}
+
+.cart-product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cart-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    color: #999;
+    background: #f3f3f3;
+}
+
+.cart-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cart-product h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.cart-product p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.quantity-box {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-box button {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.quantity {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 32px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.subtotal {
+    color: #ff6700;
+}
+
+.cart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding: 18px 0 0;
+}
+
+.cart-total a {
+    color: #666;
+}
+
+.cart-total strong {
+    color: #ff6700;
+    font-size: 24px;
+}
+
+.cart-total button {
+    margin-left: 24px;
+    padding: 12px 36px;
+    color: #fff;
+    cursor: pointer;
+    background: #ff6700;
+    border: 0;
+}
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    min-height: 520px;
+    padding: 50px 70px;
+    background: #fff;
+}
+
+.login-intro {
+    flex: 1;
+}
+
+.login-intro h1 {
+    margin: 0 0 18px;
+    font-size: 34px;
+    font-weight: normal;
+}
+
+.login-intro p {
+    max-width: 420px;
+    margin: 0;
+    color: #666;
+    line-height: 1.8;
+}
+
+.login-form {
+    width: 360px;
+    padding: 34px 32px;
+    background: #f8f8f8;
+}
+
+.login-form h2 {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 18px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.login-form input:focus {
+    border-color: #ff6700;
+}
+
+.form-message {
+    min-height: 22px;
+    margin: 0 0 12px;
+    color: #ff6700;
+    font-size: 14px;
+}
+
+.login-form button {
+    width: 100%;
+    height: 44px;
+    color: #fff;
+    cursor: pointer;
+    background: #ff6700;
+    border: 0;
+}
+
+.register-text {
+    margin: 16px 0 0;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #ff6700;
+}
+
+.service-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.service-item {
+    padding: 24px;
+    background: #fff;
+    border-left: 4px solid #ff6700;
+}
+
+.service-item h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.service-item p {
+    margin: 0;
+    color: #777;
+    line-height: 1.7;
+}
+
+.buy-guide {
+    margin-top: 28px;
+    padding: 30px;
+    background: #fff;
+}
+
+.buy-guide h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.guide-grid h3 {
+    margin: 0 0 10px;
+    color: #ff6700;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.guide-grid p {
+    margin: 0;
+    color: #666;
+    line-height: 1.8;
+}
+
+.placeholder-section {
+    background: #fff;                 /* 白色背景 */
+    padding: 40px;                    /* 内边距 */
+    border-radius: 4px;               /* 圆角 */
+}
+
+/* 占位区标题 */
+.placeholder-section h1 {
+    margin: 0 0 12px;                 /* 底部 12px 间距 */
+    font-size: 28px;                  /* 标题字号 */
+}
+
+/* 占位区段落 */
+.placeholder-section p {
+    margin: 0;                        /* 清除外边距 */
+    color: #666;                      /* 中灰色文字 */
+    line-height: 1.8;                 /* 行高 1.8 倍 */
+}
+
+/* ===== 页脚 ===== */
+.site-footer {
+    padding: 24px 0;                  /* 上下内边距 */
+    color: #666;                      /* 中灰色文字 */
+    text-align: center;               /* 文字居中 */
+    background: #fff;                 /* 白色背景 */
+}
+
+@media (max-width: 900px) {
+    .nav-box,
+    .search-box,
+    .home-hero,
+    .detail-box,
+    .login-page,
+    .cart-total {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+
+    .nav-box {
+        gap: 14px;
+        padding: 14px 0;
+    }
+
+    .main-nav,
+    .filter-tabs {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .search-box {
+        gap: 18px;
+        padding: 18px 0;
+    }
+
+    .search-form,
+    .login-form {
+        width: 100%;
+    }
+
+    .category-menu,
+    .detail-image {
+        width: 100%;
+    }
+
+    .product-grid,
+    .service-section,
+    .guide-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-box,
+    .login-page {
+        padding: 32px;
+    }
+
+    .cart-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .cart-head {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .product-grid,
+    .service-section,
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner {
+        padding: 46px 28px;
+    }
+
+    .hero-banner h1 {
+        font-size: 32px;
+    }
+
+    .detail-box,
+    .login-page,
+    .cart-box {
+        padding: 24px;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+}

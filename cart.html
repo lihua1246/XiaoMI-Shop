@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +23,157 @@
     <main class="container page-main">
         <section class="page-title">
             <h1>购物车</h1>
+            <p>确认商品信息、调整数量，满意后即可结算。</p>
         </section>
 
-        <!-- 本页内容由对应负责人继续开发 -->
+        <!-- 购物车有商品时显示 -->
+        <section class="cart-content" id="cartContent">
+            <!-- 表头 -->
+            <div class="cart-header">
+                <span class="cart-col-check"></span>
+                <span class="cart-col-product">商品信息</span>
+                <span class="cart-col-price">单价</span>
+                <span class="cart-col-qty">数量</span>
+                <span class="cart-col-subtotal">小计</span>
+            </div>
+
+            <!-- 购物车商品列表 -->
+            <div class="cart-list" id="cartList">
+                <!-- 商品 1 -->
+                <div class="cart-item" data-price="3999">
+                    <span class="cart-col-check">
+                        <input type="checkbox" class="cart-checkbox" checked>
+                    </span>
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual" aria-hidden="true">15</span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">Xiaomi 15</strong>
+                            <span class="cart-product-desc">旗舰影像手机</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price">
+                        <span class="cart-price">¥3,999</span>
+                    </span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn qty-minus" aria-label="减少数量">−</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn qty-plus" aria-label="增加数量">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal">
+                        <span class="cart-subtotal">¥3,999</span>
+                    </span>
+                </div>
+
+                <!-- 商品 2 -->
+                <div class="cart-item" data-price="2249">
+                    <span class="cart-col-check">
+                        <input type="checkbox" class="cart-checkbox" checked>
+                    </span>
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual cart-product-visual-img">
+                            <img src="images/redmi-k80-main.png" alt="Redmi K80">
+                        </span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">Redmi K80</strong>
+                            <span class="cart-product-desc">双芯旗舰，狂暴登场</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price">
+                        <span class="cart-price">¥2,249</span>
+                    </span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn qty-minus" aria-label="减少数量">−</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn qty-plus" aria-label="增加数量">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal">
+                        <span class="cart-subtotal">¥2,249</span>
+                    </span>
+                </div>
+
+                <!-- 商品 3 -->
+                <div class="cart-item" data-price="2699">
+                    <span class="cart-col-check">
+                        <input type="checkbox" class="cart-checkbox" checked>
+                    </span>
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual cart-product-visual-img">
+                            <img src="images/xiaomi-tv-s-pro.png" alt="小米电视 S Pro">
+                        </span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">小米电视 S Pro</strong>
+                            <span class="cart-product-desc">Mini LED 画质新旗舰</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price">
+                        <span class="cart-price">¥2,699</span>
+                    </span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn qty-minus" aria-label="减少数量">−</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn qty-plus" aria-label="增加数量">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal">
+                        <span class="cart-subtotal">¥2,699</span>
+                    </span>
+                </div>
+
+                <!-- 商品 4 -->
+                <div class="cart-item" data-price="1999">
+                    <span class="cart-col-check">
+                        <input type="checkbox" class="cart-checkbox" checked>
+                    </span>
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual cart-product-visual-img">
+                            <img src="images/xiaomi-pad7-blue.png" alt="Xiaomi Pad 7">
+                        </span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">Xiaomi Pad 7</strong>
+                            <span class="cart-product-desc">学习娱乐平板</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price">
+                        <span class="cart-price">¥1,999</span>
+                    </span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn qty-minus" aria-label="减少数量">−</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn qty-plus" aria-label="增加数量">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal">
+                        <span class="cart-subtotal">¥1,999</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- 购物车底部结算栏 -->
+            <div class="cart-footer">
+                <div class="cart-footer-left">
+                    <span class="cart-total-label">已选 <em id="checkedCount">4</em> 件，合计：</span>
+                    <span class="cart-total-price" id="cartTotal">¥10,946</span>
+                </div>
+                <div class="cart-footer-right">
+                    <a class="btn btn-outline" href="products.html">继续购物</a>
+                    <button type="button" class="btn btn-primary" id="checkoutBtn">去结算</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 购物车为空时显示 -->
+        <section class="cart-empty" id="cartEmpty" style="display:none;">
+            <div class="cart-empty-icon" aria-hidden="true">🛒</div>
+            <h2>购物车是空的</h2>
+            <p>快去挑选心仪的商品吧</p>
+            <a class="btn btn-primary" href="products.html">去逛逛</a>
+        </section>
     </main>
 
     <footer class="site-footer">
