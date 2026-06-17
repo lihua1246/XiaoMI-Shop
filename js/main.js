@@ -1,5 +1,3 @@
-console.log('XiaoMI-Shop project loaded');
-
 /* ========== detail page ========== */
 document.querySelectorAll('.option-list').forEach((optionList) => {
     optionList.addEventListener('click', (event) => {

@@ -5,8 +5,8 @@ const goodsData = [
         price: '3999 元起',
         type: 'phone',
         label: '15',
-        image: 'images/小米15黑.png',
-        detailUrl: 'detail.html'
+        image: 'images/xiaomi-15-black.png',
+        detailUrl: 'detail-xiaomi-15.html'
     },
     {
         name: 'Redmi K80',
@@ -15,7 +15,7 @@ const goodsData = [
         type: 'phone',
         label: 'K80',
         image: 'images/redmi-k80-main.png',
-        detailUrl: 'detail2.html'
+        detailUrl: 'detail-redmi-k80.html'
     },
     {
         name: 'Redmi Note 14',
@@ -24,7 +24,7 @@ const goodsData = [
         type: 'phone',
         label: 'N14',
         image: 'images/redmi-note14-blue.png',
-        detailUrl: 'detail3.html'
+        detailUrl: 'detail-redmi-note-14.html'
     },
     {
         name: '小米电视 S Pro',
@@ -33,7 +33,7 @@ const goodsData = [
         type: 'tv',
         label: 'TV',
         image: 'images/xiaomi-tv-s-pro.png',
-        detailUrl: 'detail4.html'
+        detailUrl: 'detail-xiaomi-tv-s-pro.html'
     },
     {
         name: 'Redmi Book Pro',
@@ -42,7 +42,7 @@ const goodsData = [
         type: 'laptop',
         label: 'Book',
         image: 'images/redmi-book-pro.png',
-        detailUrl: 'detail5.html'
+        detailUrl: 'detail-redmi-book-pro.html'
     },
     {
         name: 'Xiaomi Pad 7',
@@ -51,7 +51,7 @@ const goodsData = [
         type: 'device',
         label: 'Pad',
         image: 'images/xiaomi-pad7-blue.png',
-        detailUrl: 'detail6.html'
+        detailUrl: 'detail-xiaomi-pad-7.html'
     },
     {
         name: '米家空调',
@@ -59,8 +59,8 @@ const goodsData = [
         price: '2299 元起',
         type: 'home',
         label: '空调',
-        image: 'images/C6633375EB695B7EEA01515D6E9B2997.png',
-        detailUrl: 'xiaomi-shop/detail7.html'
+        image: 'images/mijia-ac-indoor.png',
+        detailUrl: 'detail-mijia-ac.html'
     },
     {
         name: '小米手表',
@@ -68,8 +68,8 @@ const goodsData = [
         price: '699 元起',
         type: 'device',
         label: 'Watch',
-        image: 'images/手表白.png',
-        detailUrl: 'detail8.html'
+        image: 'images/xiaomi-watch-white.png',
+        detailUrl: 'detail-xiaomi-watch.html'
     }
 ];
 
