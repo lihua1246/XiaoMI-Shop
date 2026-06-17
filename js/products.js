@@ -57,7 +57,9 @@ const goodsData = [
         description: '节能智能空调',
         price: '2299 元起',
         type: 'home',
-        label: '空调'
+        label: '空调',
+        image: 'images/C6633375EB695B7EEA01515D6E9B2997.png',
+        detailUrl: 'xiaomi-shop/detail7.html'
     },
     {
         name: '小米手表',
