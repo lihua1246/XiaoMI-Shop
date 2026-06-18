@@ -1,4 +1,4 @@
-const goodsData = [
+const products = [
     {
         name: 'Xiaomi 15',
         description: '新一代旗舰手机，高清影像与长续航体验',
@@ -73,62 +73,50 @@ const goodsData = [
     }
 ];
 
-const goodsContainer = document.getElementById('goodsContainer');
-const tabs = document.querySelectorAll('.tab-item');
+const productBox = document.getElementById('goodsContainer');
+const filterTabs = document.querySelectorAll('.tab-item');
 
-function displayGoods(list) {
-    if (!goodsContainer) {
+function createProductCard(product) {
+    var picture = product.image
+        ? '<div class="goods-visual goods-visual-image"><img src="' + product.image + '" alt="' + product.name + '"></div>'
+        : '<div class="goods-visual" aria-hidden="true">' + product.label + '</div>';
+
+    return '<article class="goods-card" data-type="' + product.type + '">'
+        + picture
+        + '<h2 class="goods-name">' + product.name + '</h2>'
+        + '<p class="goods-desc">' + product.description + '</p>'
+        + '<div class="goods-price">' + product.price + '</div>'
+        + '<a class="detail-btn" href="' + product.detailUrl + '">查看详情</a>'
+        + '</article>';
+}
+
+function renderProducts(list) {
+    if (!productBox) {
         return;
     }
 
     if (list.length === 0) {
-        goodsContainer.innerHTML = '<div class="empty-goods">暂无该分类商品</div>';
+        productBox.innerHTML = '<div class="empty-goods">暂无该分类商品</div>';
         return;
     }
 
-    let html = '';
-    for (let i = 0; i < list.length; i++) {
-        var item = list[i];
-        var visual = item.image
-            ? '<div class="goods-visual goods-visual-image"><img src="' + item.image + '" alt="' + item.name + '"></div>'
-            : '<div class="goods-visual" aria-hidden="true">' + item.label + '</div>';
-        var detailControl = item.detailUrl
-            ? '<a class="detail-btn" href="' + item.detailUrl + '">查看详情</a>'
-            : '<button class="detail-btn" type="button" data-product="' + item.name + '">查看详情</button>';
-        html += '<article class="goods-card" data-type="' + item.type + '">'
-            + visual
-            + '<h2 class="goods-name">' + item.name + '</h2>'
-            + '<p class="goods-desc">' + item.description + '</p>'
-            + '<div class="goods-price">' + item.price + '</div>'
-            + detailControl
-            + '</article>';
-    }
-    goodsContainer.innerHTML = html;
+    productBox.innerHTML = list.map(createProductCard).join('');
 }
 
-if (goodsContainer) {
-    displayGoods(goodsData);
+if (productBox) {
+    renderProducts(products);
 
-    tabs.forEach((tab) => {
+    filterTabs.forEach((tab) => {
         tab.addEventListener('click', () => {
-            tabs.forEach((item) => item.classList.remove('active'));
+            filterTabs.forEach((item) => item.classList.remove('active'));
             tab.classList.add('active');
 
-            const selectType = tab.dataset.type;
-            const list = selectType === 'all'
-                ? goodsData
-                : goodsData.filter((item) => item.type === selectType);
+            const category = tab.dataset.type;
+            const result = category === 'all'
+                ? products
+                : products.filter((item) => item.type === category);
 
-            displayGoods(list);
+            renderProducts(result);
         });
-    });
-
-    goodsContainer.addEventListener('click', (event) => {
-        const button = event.target.closest('button.detail-btn');
-        if (!button) {
-            return;
-        }
-
-        alert(`暂未配置「${button.dataset.product}」商品详情页`);
     });
 }

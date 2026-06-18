@@ -632,8 +632,6 @@ a {
     margin: 0;
 }
 
-/* ========== cart page ========== */
-
 .cart-content {
     background: var(--color-panel);
     border-radius: 8px;
@@ -682,7 +680,6 @@ a {
     width: 16px;
 }
 
-/* 商品行 */
 .cart-item {
     align-items: center;
     border-bottom: 1px solid var(--color-border);
@@ -752,7 +749,6 @@ a {
     font-weight: 600;
 }
 
-/* 数量加减 */
 .cart-qty-stepper {
     align-items: center;
     border: 1px solid var(--color-border);
@@ -803,7 +799,6 @@ a {
     font-weight: 700;
 }
 
-/* 底部结算栏 */
 .cart-footer {
     align-items: center;
     background: #fafafa;
@@ -846,7 +841,6 @@ a {
     flex-wrap: wrap;
 }
 
-/* 空购物车 */
 .cart-empty {
     background: var(--color-panel);
     border-radius: 8px;
@@ -870,8 +864,6 @@ a {
     font-size: 15px;
     margin: 0 0 24px;
 }
-
-/* ========== login page ========== */
 
 .login-body {
     background:
@@ -1108,7 +1100,6 @@ a {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* --- cart mobile --- */
     .cart-header {
         display: none;
     }
