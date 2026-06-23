@@ -1,24 +1,20 @@
-(function () {
-    var optionGroups = document.querySelectorAll('.option-list');
+var optionButtons = document.querySelectorAll('.option-btn');
 
-    optionGroups.forEach(function (group) {
-        group.addEventListener('click', function (event) {
-            var button = event.target.closest('.option-btn');
-            if (!button) {
-                return;
-            }
+for (var i = 0; i < optionButtons.length; i++) {
+    optionButtons[i].onclick = function () {
+        var group = this.parentNode;
+        var buttons = group.querySelectorAll('.option-btn');
 
-            group.querySelectorAll('.option-btn').forEach(function (item) {
-                item.classList.remove('active');
-            });
-            button.classList.add('active');
+        for (var j = 0; j < buttons.length; j++) {
+            buttons[j].classList.remove('active');
+        }
 
-            if (button.dataset.img) {
-                var productImage = document.querySelector('.phone-img');
-                if (productImage) {
-                    productImage.src = button.dataset.img;
-                }
-            }
-        });
-    });
-})();
+        this.classList.add('active');
+
+        var img = this.getAttribute('data-img');
+        var productImage = document.querySelector('.phone-img');
+        if (img && productImage) {
+            productImage.src = img;
+        }
+    };
+}
