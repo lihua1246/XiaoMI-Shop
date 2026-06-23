@@ -1,230 +1,148 @@
-(function () {
-    var CART_KEY = 'xiaomiCart';
+var cartKey = 'xiaomiCart';
 
-    function readCart() {
-        try {
-            var saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-            return Array.isArray(saved) ? saved : [];
-        } catch (error) {
-            return [];
+function getCartList() {
+    var text = localStorage.getItem(cartKey);
+    if (text) {
+        return JSON.parse(text);
+    }
+    return [];
+}
+
+function saveCartList(list) {
+    localStorage.setItem(cartKey, JSON.stringify(list));
+}
+
+function addProductToCart(btn) {
+    var list = getCartList();
+    var id = btn.getAttribute('data-id');
+    var hasProduct = false;
+
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].id === id) {
+            list[i].num = list[i].num + 1;
+            hasProduct = true;
         }
     }
 
-    function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    }
-
-    function priceText(price) {
-        return '¥' + price.toLocaleString('zh-CN');
-    }
-
-    function htmlText(text) {
-        return String(text || '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
-
-    function cartItemFrom(button) {
-        var detailImage = document.querySelector('.phone-img');
-        var currentImage = detailImage ? detailImage.getAttribute('src') : '';
-
-        return {
-            id: button.dataset.id,
-            name: button.dataset.name,
-            desc: button.dataset.desc,
-            price: parseInt(button.dataset.price, 10),
-            image: currentImage || button.dataset.image || '',
-            qty: 1,
-            checked: true
-        };
-    }
-
-    function addCartItem(product) {
-        if (!product.id || !product.name || isNaN(product.price)) {
-            return false;
-        }
-
-        var cart = readCart();
-        var sameItem = cart.find(function (item) {
-            return item.id === product.id;
+    if (!hasProduct) {
+        list.push({
+            id: id,
+            name: btn.getAttribute('data-name'),
+            desc: btn.getAttribute('data-desc'),
+            price: Number(btn.getAttribute('data-price')),
+            image: btn.getAttribute('data-image'),
+            num: 1
         });
-
-        if (sameItem) {
-            sameItem.qty = parseInt(sameItem.qty, 10) + 1 || 2;
-            sameItem.checked = true;
-            if (product.image) {
-                sameItem.image = product.image;
-            }
-        } else {
-            cart.push(product);
-        }
-
-        saveCart(cart);
-        return true;
     }
 
-    document.addEventListener('click', function (event) {
-        var button = event.target.closest('[data-cart-action="add"]');
-        if (!button) {
-            return;
-        }
+    saveCartList(list);
+}
 
-        event.preventDefault();
-        if (addCartItem(cartItemFrom(button))) {
-            window.location.href = button.getAttribute('href') || 'cart.html';
-        }
-    });
+var addButtons = document.querySelectorAll('[data-cart-action="add"]');
+for (var i = 0; i < addButtons.length; i++) {
+    addButtons[i].onclick = function () {
+        addProductToCart(this);
+    };
+}
 
-    var cartList = document.getElementById('cartList');
-    var cartTotal = document.getElementById('cartTotal');
-    var checkedCount = document.getElementById('checkedCount');
-    var cartContent = document.getElementById('cartContent');
-    var cartEmpty = document.getElementById('cartEmpty');
+var cartList = document.getElementById('cartList');
+var cartTotal = document.getElementById('cartTotal');
+var checkedCount = document.getElementById('checkedCount');
+var cartContent = document.getElementById('cartContent');
+var cartEmpty = document.getElementById('cartEmpty');
 
+function showCart() {
     if (!cartList) {
         return;
     }
 
-    function getCart() {
-        return readCart().map(function (item) {
-            return {
-                id: item.id,
-                name: item.name,
-                desc: item.desc,
-                price: parseInt(item.price, 10),
-                image: item.image || '',
-                qty: Math.max(parseInt(item.qty, 10) || 1, 1),
-                checked: item.checked !== false
-            };
-        }).filter(function (item) {
-            return item.id && item.name && !isNaN(item.price);
-        });
+    var list = getCartList();
+    var html = '';
+
+    if (list.length === 0) {
+        cartContent.style.display = 'none';
+        cartEmpty.style.display = 'block';
+        return;
     }
 
-    function updateTotal(cart) {
-        var total = 0;
-        var checked = 0;
+    cartContent.style.display = 'block';
+    cartEmpty.style.display = 'none';
 
-        cart.forEach(function (item) {
-            if (item.checked) {
-                total += item.price * item.qty;
-                checked += item.qty;
+    for (var i = 0; i < list.length; i++) {
+        html += '<div class="cart-item" data-index="' + i + '">';
+        html += '<span class="cart-col-check"><input type="checkbox" class="cart-checkbox" checked></span>';
+        html += '<span class="cart-col-product">';
+        html += '<span class="cart-product-visual cart-product-visual-img"><img src="' + list[i].image + '" alt="' + list[i].name + '"></span>';
+        html += '<span class="cart-product-info">';
+        html += '<strong class="cart-product-name">' + list[i].name + '</strong>';
+        html += '<span class="cart-product-desc">' + list[i].desc + '</span>';
+        html += '</span></span>';
+        html += '<span class="cart-col-price"><span class="cart-price">¥' + list[i].price + '</span></span>';
+        html += '<span class="cart-col-qty">';
+        html += '<span class="cart-qty-stepper">';
+        html += '<button type="button" class="qty-btn minus-btn">-</button>';
+        html += '<input type="text" class="qty-input" value="' + list[i].num + '" readonly>';
+        html += '<button type="button" class="qty-btn plus-btn">+</button>';
+        html += '</span></span>';
+        html += '<span class="cart-col-subtotal"><span class="cart-subtotal">¥' + (list[i].price * list[i].num) + '</span></span>';
+        html += '</div>';
+    }
+
+    cartList.innerHTML = html;
+    countTotal();
+    bindCartButtons();
+}
+
+function countTotal() {
+    var list = getCartList();
+    var total = 0;
+    var count = 0;
+
+    for (var i = 0; i < list.length; i++) {
+        total += list[i].price * list[i].num;
+        count += list[i].num;
+    }
+
+    if (cartTotal) {
+        cartTotal.innerText = '¥' + total;
+    }
+    if (checkedCount) {
+        checkedCount.innerText = count;
+    }
+}
+
+function bindCartButtons() {
+    var plusButtons = document.querySelectorAll('.plus-btn');
+    var minusButtons = document.querySelectorAll('.minus-btn');
+
+    for (var i = 0; i < plusButtons.length; i++) {
+        plusButtons[i].onclick = function () {
+            var index = this.parentNode.parentNode.parentNode.getAttribute('data-index');
+            var list = getCartList();
+            list[index].num = list[index].num + 1;
+            saveCartList(list);
+            showCart();
+        };
+    }
+
+    for (var j = 0; j < minusButtons.length; j++) {
+        minusButtons[j].onclick = function () {
+            var index = this.parentNode.parentNode.parentNode.getAttribute('data-index');
+            var list = getCartList();
+            if (list[index].num > 1) {
+                list[index].num = list[index].num - 1;
             }
-        });
-
-        if (cartTotal) {
-            cartTotal.textContent = priceText(total);
-        }
-        if (checkedCount) {
-            checkedCount.textContent = checked;
-        }
+            saveCartList(list);
+            showCart();
+        };
     }
+}
 
-    function cartRow(item) {
-        var picture = item.image
-            ? '<span class="cart-product-visual cart-product-visual-img"><img src="' + htmlText(item.image) + '" alt="' + htmlText(item.name) + '"></span>'
-            : '<span class="cart-product-visual" aria-hidden="true">' + htmlText(item.name.slice(0, 2)) + '</span>';
+var checkoutBtn = document.getElementById('checkoutBtn');
+if (checkoutBtn) {
+    checkoutBtn.onclick = function () {
+        alert('当前合计：' + cartTotal.innerText);
+    };
+}
 
-        return '<div class="cart-item" data-id="' + htmlText(item.id) + '" data-price="' + item.price + '">'
-            + '<span class="cart-col-check">'
-            + '<input type="checkbox" class="cart-checkbox" ' + (item.checked ? 'checked' : '') + '>'
-            + '</span>'
-            + '<span class="cart-col-product">'
-            + picture
-            + '<span class="cart-product-info">'
-            + '<strong class="cart-product-name">' + htmlText(item.name) + '</strong>'
-            + '<span class="cart-product-desc">' + htmlText(item.desc) + '</span>'
-            + '</span>'
-            + '</span>'
-            + '<span class="cart-col-price"><span class="cart-price">' + priceText(item.price) + '</span></span>'
-            + '<span class="cart-col-qty">'
-            + '<span class="cart-qty-stepper">'
-            + '<button type="button" class="qty-btn qty-minus" aria-label="减少数量">−</button>'
-            + '<input type="text" class="qty-input" value="' + item.qty + '" readonly>'
-            + '<button type="button" class="qty-btn qty-plus" aria-label="增加数量">+</button>'
-            + '</span>'
-            + '</span>'
-            + '<span class="cart-col-subtotal"><span class="cart-subtotal">' + priceText(item.price * item.qty) + '</span></span>'
-            + '</div>';
-    }
-
-    function renderCart() {
-        var cart = getCart();
-        saveCart(cart);
-
-        if (cart.length === 0) {
-            cartList.innerHTML = '';
-            if (cartContent) {
-                cartContent.style.display = 'none';
-            }
-            if (cartEmpty) {
-                cartEmpty.style.display = 'block';
-            }
-            updateTotal([]);
-            return;
-        }
-
-        if (cartContent) {
-            cartContent.style.display = '';
-        }
-        if (cartEmpty) {
-            cartEmpty.style.display = 'none';
-        }
-
-        cartList.innerHTML = cart.map(cartRow).join('');
-        updateTotal(cart);
-    }
-
-    function changeItem(itemId, updater) {
-        var cart = getCart();
-        cart.forEach(function (item) {
-            if (item.id === itemId) {
-                updater(item);
-            }
-        });
-        saveCart(cart);
-        renderCart();
-    }
-
-    cartList.addEventListener('click', function (event) {
-        var button = event.target.closest('.qty-btn');
-        if (!button) {
-            return;
-        }
-
-        var row = button.closest('.cart-item');
-        var itemId = row ? row.getAttribute('data-id') : '';
-        changeItem(itemId, function (item) {
-            if (button.classList.contains('qty-plus')) {
-                item.qty += 1;
-            } else if (button.classList.contains('qty-minus') && item.qty > 1) {
-                item.qty -= 1;
-            }
-        });
-    });
-
-    cartList.addEventListener('change', function (event) {
-        if (!event.target.classList.contains('cart-checkbox')) {
-            return;
-        }
-
-        var row = event.target.closest('.cart-item');
-        var itemId = row ? row.getAttribute('data-id') : '';
-        changeItem(itemId, function (item) {
-            item.checked = event.target.checked;
-        });
-    });
-
-    var checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', function () {
-            var totalText = cartTotal ? cartTotal.textContent : '¥0';
-            var countText = checkedCount ? checkedCount.textContent : '0';
-            alert('已选 ' + countText + ' 件商品，合计 ' + totalText);
-        });
-    }
-
-    renderCart();
-})();
+showCart();

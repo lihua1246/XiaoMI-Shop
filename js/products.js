@@ -1,122 +1,22 @@
-const products = [
-    {
-        name: 'Xiaomi 15',
-        description: '新一代旗舰手机，高清影像与长续航体验',
-        price: '3999 元起',
-        type: 'phone',
-        label: '15',
-        image: 'images/xiaomi-15-black.png',
-        detailUrl: 'detail-xiaomi-15.html'
-    },
-    {
-        name: 'Redmi K80',
-        description: '双芯旗舰，狂暴登场',
-        price: '2249 元起',
-        type: 'phone',
-        label: 'K80',
-        image: 'images/redmi-k80-main.png',
-        detailUrl: 'detail-redmi-k80.html'
-    },
-    {
-        name: 'Redmi Note 14',
-        description: '真抗摔，真防水，长续航',
-        price: '1349 元起',
-        type: 'phone',
-        label: 'N14',
-        image: 'images/redmi-note14-blue.png',
-        detailUrl: 'detail-redmi-note-14.html'
-    },
-    {
-        name: '小米电视 S Pro',
-        description: 'Mini LED 画质新旗舰，288Hz 超高刷',
-        price: '2699 元起',
-        type: 'tv',
-        label: 'TV',
-        image: 'images/xiaomi-tv-s-pro.png',
-        detailUrl: 'detail-xiaomi-tv-s-pro.html'
-    },
-    {
-        name: 'Redmi Book Pro',
-        description: '80W 狂暴性能，3.1K 165Hz 高刷高亮屏',
-        price: '7299 元起',
-        type: 'laptop',
-        label: 'Book',
-        image: 'images/redmi-book-pro.png',
-        detailUrl: 'detail-redmi-book-pro.html'
-    },
-    {
-        name: 'Xiaomi Pad 7',
-        description: '11.2 英寸 3.2K 高清高刷屏',
-        price: '1999 元起',
-        type: 'device',
-        label: 'Pad',
-        image: 'images/xiaomi-pad7-blue.png',
-        detailUrl: 'detail-xiaomi-pad-7.html'
-    },
-    {
-        name: '米家空调',
-        description: '节能智能空调',
-        price: '2299 元起',
-        type: 'home',
-        label: '空调',
-        image: 'images/mijia-ac-indoor.png',
-        detailUrl: 'detail-mijia-ac.html'
-    },
-    {
-        name: '小米手表',
-        description: '运动健康助手',
-        price: '699 元起',
-        type: 'device',
-        label: 'Watch',
-        image: 'images/xiaomi-watch-white.png',
-        detailUrl: 'detail-xiaomi-watch.html'
-    }
-];
+var tabButtons = document.querySelectorAll('.tab-item');
+var goodsCards = document.querySelectorAll('.goods-card');
 
-const productBox = document.getElementById('goodsContainer');
-const filterTabs = document.querySelectorAll('.tab-item');
+for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].onclick = function () {
+        var type = this.getAttribute('data-type');
 
-function createProductCard(product) {
-    var picture = product.image
-        ? '<div class="goods-visual goods-visual-image"><img src="' + product.image + '" alt="' + product.name + '"></div>'
-        : '<div class="goods-visual" aria-hidden="true">' + product.label + '</div>';
+        for (var j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].classList.remove('active');
+        }
+        this.classList.add('active');
 
-    return '<article class="goods-card" data-type="' + product.type + '">'
-        + picture
-        + '<h2 class="goods-name">' + product.name + '</h2>'
-        + '<p class="goods-desc">' + product.description + '</p>'
-        + '<div class="goods-price">' + product.price + '</div>'
-        + '<a class="detail-btn" href="' + product.detailUrl + '">查看详情</a>'
-        + '</article>';
-}
-
-function renderProducts(list) {
-    if (!productBox) {
-        return;
-    }
-
-    if (list.length === 0) {
-        productBox.innerHTML = '<div class="empty-goods">暂无该分类商品</div>';
-        return;
-    }
-
-    productBox.innerHTML = list.map(createProductCard).join('');
-}
-
-if (productBox) {
-    renderProducts(products);
-
-    filterTabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-            filterTabs.forEach((item) => item.classList.remove('active'));
-            tab.classList.add('active');
-
-            const category = tab.dataset.type;
-            const result = category === 'all'
-                ? products
-                : products.filter((item) => item.type === category);
-
-            renderProducts(result);
-        });
-    });
+        for (var k = 0; k < goodsCards.length; k++) {
+            var cardType = goodsCards[k].getAttribute('data-type');
+            if (type === 'all' || type === cardType) {
+                goodsCards[k].style.display = 'block';
+            } else {
+                goodsCards[k].style.display = 'none';
+            }
+        }
+    };
 }
