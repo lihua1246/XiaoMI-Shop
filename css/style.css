@@ -516,10 +516,6 @@ a {
     min-height: 48px;
     padding: 0 20px;
 }
-.cart-col-check {
-    flex: 0 0 44px;
-    text-align: center;
-}
 .cart-col-product {
     flex: 1 1 320px;
     min-width: 0;
@@ -532,12 +528,6 @@ a {
 .cart-col-subtotal {
     flex: 0 0 120px;
     text-align: right;
-}
-.cart-checkbox {
-    accent-color: #ff6700;
-    cursor: pointer;
-    height: 16px;
-    width: 16px;
 }
 .cart-item {
     align-items: center;
@@ -672,26 +662,6 @@ a {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-}
-.cart-empty {
-    background: #fff;
-    border-radius: 8px;
-    padding: 64px 20px;
-    text-align: center;
-}
-.cart-empty-icon {
-    font-size: 56px;
-    margin-bottom: 16px;
-}
-.cart-empty h2 {
-    color: #222;
-    font-size: 22px;
-    margin: 0 0 8px;
-}
-.cart-empty p {
-    color: #777;
-    font-size: 15px;
-    margin: 0 0 24px;
 }
 .login-body {
     background: #f4f4f4;

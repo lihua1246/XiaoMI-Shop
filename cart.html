@@ -26,16 +26,57 @@
             <p>确认商品信息、调整数量，满意后即可结算。</p>
         </section>
 
-        <section class="cart-content" id="cartContent" style="display:none;">
+        <section class="cart-content" id="cartContent">
             <div class="cart-header">
-                <span class="cart-col-check"></span>
                 <span class="cart-col-product">商品信息</span>
                 <span class="cart-col-price">单价</span>
                 <span class="cart-col-qty">数量</span>
                 <span class="cart-col-subtotal">小计</span>
             </div>
 
-            <div class="cart-list" id="cartList"></div>
+            <div class="cart-list" id="cartList">
+                <div class="cart-item" data-price="3999">
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual cart-product-visual-img">
+                            <img src="images/xiaomi-15-black.png" alt="Xiaomi 15">
+                        </span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">Xiaomi 15</strong>
+                            <span class="cart-product-desc">旗舰影像手机</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price"><span class="cart-price">¥3999</span></span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn minus-btn">-</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn plus-btn">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal"><span class="cart-subtotal">¥3999</span></span>
+                </div>
+
+                <div class="cart-item" data-price="1999">
+                    <span class="cart-col-product">
+                        <span class="cart-product-visual cart-product-visual-img">
+                            <img src="images/xiaomi-pad7-blue.png" alt="Xiaomi Pad 7">
+                        </span>
+                        <span class="cart-product-info">
+                            <strong class="cart-product-name">Xiaomi Pad 7</strong>
+                            <span class="cart-product-desc">学习娱乐平板</span>
+                        </span>
+                    </span>
+                    <span class="cart-col-price"><span class="cart-price">¥1999</span></span>
+                    <span class="cart-col-qty">
+                        <span class="cart-qty-stepper">
+                            <button type="button" class="qty-btn minus-btn">-</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button type="button" class="qty-btn plus-btn">+</button>
+                        </span>
+                    </span>
+                    <span class="cart-col-subtotal"><span class="cart-subtotal">¥1999</span></span>
+                </div>
+            </div>
 
             <div class="cart-footer">
                 <div class="cart-footer-left">
@@ -49,12 +90,6 @@
             </div>
         </section>
 
-        <section class="cart-empty" id="cartEmpty">
-            <div class="cart-empty-icon" aria-hidden="true">🛒</div>
-            <h2>购物车是空的</h2>
-            <p>快去挑选心仪的商品吧</p>
-            <a class="btn btn-primary" href="products.html">去逛逛</a>
-        </section>
     </main>
 
     <footer class="site-footer">
