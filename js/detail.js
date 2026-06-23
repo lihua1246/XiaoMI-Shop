@@ -11,10 +11,5 @@ for (var i = 0; i < optionButtons.length; i++) {
 
         this.classList.add('active');
 
-        var img = this.getAttribute('data-img');
-        var productImage = document.querySelector('.phone-img');
-        if (img && productImage) {
-            productImage.src = img;
-        }
     };
 }
