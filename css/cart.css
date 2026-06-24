@@ -82,6 +82,18 @@
     color: #777;
     font-size: 13px;
 }
+.remove-btn {
+    align-self: flex-start;
+    background: none;
+    border: 0;
+    color: #999;
+    cursor: pointer;
+    font: inherit;
+    padding: 2px 0;
+}
+.remove-btn:hover {
+    color: #ff6700;
+}
 .cart-price {
     color: #555;
     font-size: 15px;
@@ -162,4 +174,20 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+}
+.cart-empty {
+    padding: 72px 20px;
+    text-align: center;
+}
+.cart-empty h2 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+.cart-empty p {
+    color: #777;
+    margin: 0 0 24px;
+}
+#checkoutBtn:disabled {
+    background: #b0b0b0;
+    cursor: not-allowed;
 }

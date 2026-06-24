@@ -1,54 +1,98 @@
 var cartList = document.getElementById('cartList');
 var cartTotal = document.getElementById('cartTotal');
 var checkedCount = document.getElementById('checkedCount');
+var cartHeader = document.getElementById('cartHeader');
+var cartEmpty = document.getElementById('cartEmpty');
+var cartFooter = document.querySelector('.cart-footer');
+var checkoutBtn = document.getElementById('checkoutBtn');
+var cart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
 
-function countTotal() {
-    var items = document.querySelectorAll('.cart-item');
+function saveCart() {
+    localStorage.setItem('xiaomiCart', JSON.stringify(cart));
+}
+
+function updateTotal() {
     var total = 0;
     var count = 0;
 
-    for (var i = 0; i < items.length; i++) {
-        var price = Number(items[i].getAttribute('data-price'));
-        var input = items[i].querySelector('.qty-input');
-        var subtotal = items[i].querySelector('.cart-subtotal');
-        var num = Number(input.value);
-
-        subtotal.innerText = '¥' + price * num;
-        total += price * num;
-        count += num;
+    for (var i = 0; i < cart.length; i++) {
+        total += cart[i].price * cart[i].quantity;
+        count += cart[i].quantity;
     }
 
     cartTotal.innerText = '¥' + total;
     checkedCount.innerText = count;
 }
 
-function bindButtons() {
-    var plusButtons = document.querySelectorAll('.plus-btn');
-    var minusButtons = document.querySelectorAll('.minus-btn');
-
-    for (var i = 0; i < plusButtons.length; i++) {
-        plusButtons[i].onclick = function () {
-            var input = this.parentNode.querySelector('.qty-input');
-            input.value = Number(input.value) + 1;
-            countTotal();
-        };
-    }
-
-    for (var j = 0; j < minusButtons.length; j++) {
-        minusButtons[j].onclick = function () {
-            var input = this.parentNode.querySelector('.qty-input');
-            if (Number(input.value) > 1) {
-                input.value = Number(input.value) - 1;
-            }
-            countTotal();
-        };
-    }
+function createCartItem(product, index) {
+    return '<div class="cart-item" data-index="' + index + '">' +
+        '<span class="cart-col-product">' +
+            '<span class="cart-product-visual cart-product-visual-img">' +
+                '<img src="' + product.image + '" alt="' + product.name + '">' +
+            '</span>' +
+            '<span class="cart-product-info">' +
+                '<strong class="cart-product-name">' + product.name + '</strong>' +
+                '<span class="cart-product-desc">' + product.description + '</span>' +
+                '<button type="button" class="remove-btn">删除</button>' +
+            '</span>' +
+        '</span>' +
+        '<span class="cart-col-price"><span class="cart-price">¥' + product.price + '</span></span>' +
+        '<span class="cart-col-qty">' +
+            '<span class="cart-qty-stepper">' +
+                '<button type="button" class="qty-btn minus-btn">-</button>' +
+                '<input type="text" class="qty-input" value="' + product.quantity + '" readonly>' +
+                '<button type="button" class="qty-btn plus-btn">+</button>' +
+            '</span>' +
+        '</span>' +
+        '<span class="cart-col-subtotal"><span class="cart-subtotal">¥' +
+            product.price * product.quantity +
+        '</span></span>' +
+    '</div>';
 }
 
-var checkoutBtn = document.getElementById('checkoutBtn');
+function renderCart() {
+    var html = '';
+
+    for (var i = 0; i < cart.length; i++) {
+        html += createCartItem(cart[i], i);
+    }
+
+    cartList.innerHTML = html;
+    var isEmpty = cart.length === 0;
+    cartHeader.style.display = isEmpty ? 'none' : 'flex';
+    cartEmpty.style.display = isEmpty ? 'block' : 'none';
+    cartFooter.style.display = isEmpty ? 'none' : 'flex';
+    checkoutBtn.disabled = isEmpty;
+    updateTotal();
+}
+
 if (cartList) {
-    bindButtons();
-    countTotal();
+    renderCart();
+
+    cartList.onclick = function (event) {
+        var item = event.target.closest('.cart-item');
+
+        if (!item) {
+            return;
+        }
+
+        var index = Number(item.getAttribute('data-index'));
+
+        if (event.target.classList.contains('plus-btn')) {
+            cart[index].quantity++;
+        } else if (event.target.classList.contains('minus-btn')) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+            }
+        } else if (event.target.classList.contains('remove-btn')) {
+            cart.splice(index, 1);
+        } else {
+            return;
+        }
+
+        saveCart();
+        renderCart();
+    };
 }
 
 if (checkoutBtn) {
