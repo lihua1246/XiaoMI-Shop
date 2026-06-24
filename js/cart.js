@@ -5,7 +5,43 @@ var cartHeader = document.getElementById('cartHeader');
 var cartEmpty = document.getElementById('cartEmpty');
 var cartFooter = document.querySelector('.cart-footer');
 var checkoutBtn = document.getElementById('checkoutBtn');
-var cart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+
+function readCart() {
+    var savedCart;
+
+    try {
+        savedCart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+    } catch (error) {
+        savedCart = [];
+    }
+
+    if (!Array.isArray(savedCart)) {
+        return [];
+    }
+
+    var validCart = [];
+
+    for (var i = 0; i < savedCart.length; i++) {
+        var product = savedCart[i];
+        var price = Number(String(product.price || '').replace(/[^\d.]/g, ''));
+        var quantity = Number(product.quantity || product.count || 1);
+
+        if (!product.name || !Number.isFinite(price) || price <= 0) {
+            continue;
+        }
+
+        product.id = product.id || product.name;
+        product.price = price;
+        product.quantity = Number.isFinite(quantity) && quantity > 0 ? quantity : 1;
+        product.description = product.description || product.spec || '默认规格';
+        product.image = product.image || '';
+        validCart.push(product);
+    }
+
+    return validCart;
+}
+
+var cart = readCart();
 
 function saveCart() {
     localStorage.setItem('xiaomiCart', JSON.stringify(cart));
@@ -67,6 +103,7 @@ function renderCart() {
 }
 
 if (cartList) {
+    saveCart();
     renderCart();
 
     cartList.onclick = function (event) {

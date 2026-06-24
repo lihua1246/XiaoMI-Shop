@@ -23,7 +23,17 @@ if (addCartButton) {
     addCartButton.onclick = function (event) {
         event.preventDefault();
 
-        var cart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+        var cart;
+
+        try {
+            cart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+        } catch (error) {
+            cart = [];
+        }
+
+        if (!Array.isArray(cart)) {
+            cart = [];
+        }
         var name = document.querySelector('.detail-info h1').innerText;
         var priceText = document.querySelector('.detail-price').innerText;
         var description = document.querySelector('.detail-desc').innerText;
@@ -45,14 +55,18 @@ if (addCartButton) {
         var existingProduct = null;
 
         for (var j = 0; j < cart.length; j++) {
-            if (cart[j].id === product.id) {
+            if (cart[j].id === product.id || cart[j].name === product.name) {
                 existingProduct = cart[j];
                 break;
             }
         }
 
         if (existingProduct) {
-            existingProduct.quantity++;
+            var oldQuantity = Number(existingProduct.quantity || existingProduct.count || 1);
+            existingProduct.id = product.id;
+            existingProduct.name = product.name;
+            existingProduct.price = product.price;
+            existingProduct.quantity = (Number.isFinite(oldQuantity) && oldQuantity > 0 ? oldQuantity : 1) + 1;
             existingProduct.image = product.image;
             existingProduct.description = product.description;
         } else {
