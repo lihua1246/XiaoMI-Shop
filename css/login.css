@@ -1,0 +1,99 @@
+.login-body {
+    background: #f4f4f4;
+    min-height: 100vh;
+}
+.login-page {
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    display: flex;
+    height: 500px;
+    margin: 60px auto;
+    overflow: hidden;
+    width: min(860px, calc(100% - 32px));
+}
+.login-left {
+    align-items: center;
+    background: #333 url("../images/login-hero-tech.png") center / cover no-repeat;
+    color: #fff;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 60px 30px;
+    text-align: center;
+}
+.login-left h1 {
+    font-size: 36px;
+    margin: 0;
+}
+.login-left p {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+.login-right {
+    background-color: #fff;
+    padding: 50px 40px;
+    width: 400px;
+}
+.login-right h2 {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 30px;
+    text-align: center;
+}
+.login-right label {
+    color: #555;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.login-right input[type="text"],
+.login-right input[type="password"] {
+    border: 1px solid #ddd;
+    font-size: 14px;
+    height: 40px;
+    margin-bottom: 18px;
+    padding: 0 12px;
+    width: 100%;
+}
+.login-right input[type="checkbox"] {
+    margin-right: 6px;
+}
+.login-right .remember {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.login-right button {
+    background-color: #ff6700;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
+}
+.login-right button:hover {
+    background-color: #e85d00;
+}
+.login-right .message {
+    color: red;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
+}
+.login-right .register {
+    color: #999;
+    font-size: 14px;
+    margin-top: 16px;
+    text-align: center;
+}
+.login-right .register a {
+    color: #ff6700;
+}
+.login-right .forgot {
+    color: #999;
+    float: right;
+    font-size: 14px;
+}

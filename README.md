@@ -31,7 +31,12 @@ XiaoMI-Shop/
 ├── cart.html
 ├── login.html
 ├── css/
-│   └── style.css
+│   ├── common.css
+│   ├── index.css
+│   ├── products.css
+│   ├── detail.css
+│   ├── cart.css
+│   └── login.css
 ├── js/
 │   ├── main.js
 │   ├── products.js

@@ -1,0 +1,129 @@
+.hero-section {
+    background: #2b2b2b;
+    color: #fff;
+    margin-top: -32px;
+    padding: 56px 0;
+}
+.hero-layout {
+    align-items: center;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+}
+.hero-kicker {
+    color: #ffd7bf;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0 0 12px;
+}
+.hero-content h1 {
+    font-size: 44px;
+    line-height: 1.15;
+    margin: 0;
+}
+.hero-content p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 18px 0 0;
+    max-width: 620px;
+}
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+.hero-product {
+    background: #fff;
+    border-radius: 8px;
+    color: #222;
+    min-height: 330px;
+    padding: 28px;
+    position: relative;
+    text-align: center;
+}
+.hero-product-badge {
+    background: #ff6700;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 10px;
+    position: absolute;
+    right: 22px;
+    top: 22px;
+}
+.hero-phone {
+    align-items: center;
+    background: #f2f2f2;
+    border: 10px solid #222;
+    border-radius: 26px;
+    color: #ff6700;
+    display: flex;
+    font-size: 46px;
+    font-weight: 700;
+    height: 170px;
+    justify-content: center;
+    margin: 18px auto 22px;
+    width: 104px;
+}
+.hero-phone-image {
+    background: #f7f7f7;
+    border: none;
+    width: 150px;
+}
+.hero-phone-image img {
+    display: block;
+    max-height: 150px;
+    max-width: 90%;
+    object-fit: contain;
+}
+.hero-product h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+}
+.hero-product p {
+    color: #777;
+    margin: 0 0 10px;
+}
+.hero-product strong {
+    color: #ff6700;
+    font-size: 22px;
+}
+.category-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+}
+.category-card {
+    background: #fff;
+    border-radius: 8px;
+    min-height: 150px;
+    padding: 24px;
+    text-decoration: none;
+}
+.category-card:hover {
+    background: #fff7f0;
+}
+.category-card span {
+    color: #ff6700;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.category-card strong {
+    color: #222;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+.category-card em {
+    color: #777;
+    font-style: normal;
+}
+.featured-goods {
+    grid-template-columns: repeat(3, 1fr);
+}

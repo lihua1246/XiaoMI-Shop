@@ -1,0 +1,47 @@
+.category-tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+}
+.tab-item {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    font: inherit;
+    min-height: 44px;
+    padding: 0 12px;
+}
+.tab-item:hover,
+.tab-item.active {
+    background: #ff6700;
+    border-color: #ff6700;
+    color: #fff;
+}
+.explain-area {
+    background: #fff;
+    border-radius: 8px;
+    padding: 28px;
+}
+.explain-area h2 {
+    font-size: 24px;
+    margin: 0 0 18px;
+}
+.explain-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+}
+.explain-item h3 {
+    color: #ff6700;
+    display: block;
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+.explain-item p {
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}

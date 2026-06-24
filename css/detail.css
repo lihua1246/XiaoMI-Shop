@@ -1,0 +1,133 @@
+.detail-box {
+    align-items: stretch;
+    background: #fff;
+    border-radius: 8px;
+    display: grid;
+    gap: 34px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 24px;
+    padding: 34px;
+}
+.detail-image {
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    min-height: 360px;
+}
+.big-product-img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 260px;
+    width: 100%;
+}
+.phone-img {
+    display: block;
+    max-height: 300px;
+    max-width: 92%;
+    object-fit: contain;
+}
+.detail-info h1 {
+    color: #222;
+    font-size: 34px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+}
+.detail-desc {
+    color: #777;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 0 14px;
+}
+.detail-price {
+    color: #ff6700;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+.option-group {
+    margin-bottom: 22px;
+}
+.option-group h3 {
+    color: #222;
+    font-size: 17px;
+    margin: 0 0 12px;
+}
+.option-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.option-btn {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    font: inherit;
+    min-height: 42px;
+    padding: 0 16px;
+}
+.option-btn:hover,
+.option-btn.active {
+    border-color: #ff6700;
+    color: #ff6700;
+}
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+.buy-button,
+.back-button {
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 26px;
+    text-decoration: none;
+}
+.buy-button {
+    background: #ff6700;
+    border: 1px solid #ff6700;
+    color: #fff;
+}
+.buy-button:hover {
+    background: #e85d00;
+    border-color: #e85d00;
+}
+.back-button {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    color: #333;
+}
+.back-button:hover {
+    border-color: #ff6700;
+    color: #ff6700;
+}
+.detail-params {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px 34px;
+}
+.detail-params h2 {
+    color: #222;
+    font-size: 24px;
+    margin: 0 0 18px;
+}
+.detail-params ul {
+    display: grid;
+    gap: 10px 26px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+    padding-left: 20px;
+}
+.detail-params li {
+    color: #555;
+    line-height: 1.7;
+}
