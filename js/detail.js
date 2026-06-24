@@ -1,4 +1,5 @@
 var optionButtons = document.querySelectorAll('.option-btn');
+var productImage = document.querySelector('.phone-img');
 
 for (var i = 0; i < optionButtons.length; i++) {
     optionButtons[i].onclick = function () {
@@ -11,5 +12,8 @@ for (var i = 0; i < optionButtons.length; i++) {
 
         this.classList.add('active');
 
+        if (productImage && this.dataset.image) {
+            productImage.src = this.dataset.image;
+        }
     };
 }
