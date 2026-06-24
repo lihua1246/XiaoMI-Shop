@@ -27,6 +27,15 @@
             <p>精选小米手机、电视、笔记本和智能生活产品。</p>
         </section>
 
+        <section class="product-search" aria-label="商品搜索">
+            <label for="productSearch">搜索商品</label>
+            <div class="search-box">
+                <input type="search" id="productSearch" placeholder="输入商品名称或特点，例如：手机、长续航">
+                <button type="button" id="clearSearch">清空</button>
+            </div>
+            <p class="search-result" id="searchResult" aria-live="polite">共 8 件商品</p>
+        </section>
+
         <section class="category-tabs" aria-label="商品分类">
             <button class="tab-item active" type="button" data-type="all">全部</button>
             <button class="tab-item" type="button" data-type="phone">手机</button>
@@ -117,6 +126,8 @@
                 <a class="detail-btn" href="detail-xiaomi-watch.html">查看详情</a>
             </article>
         </section>
+
+        <p class="empty-result" id="emptyResult">没有找到符合条件的商品，请更换关键词或分类。</p>
 
         <section class="explain-area">
             <h2>选购说明</h2>
