@@ -1,6 +1,7 @@
 var optionButtons = document.querySelectorAll('.option-btn');
 var productImage = document.querySelector('.phone-img');
 var addCartButton = document.querySelector('.buy-button');
+var cartStorageKey = 'xiaomiCartV2';
 
 for (var i = 0; i < optionButtons.length; i++) {
     optionButtons[i].onclick = function () {
@@ -26,7 +27,7 @@ if (addCartButton) {
         var cart;
 
         try {
-            cart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+            cart = JSON.parse(localStorage.getItem(cartStorageKey) || '[]');
         } catch (error) {
             cart = [];
         }
@@ -73,7 +74,7 @@ if (addCartButton) {
             cart.push(product);
         }
 
-        localStorage.setItem('xiaomiCart', JSON.stringify(cart));
+        localStorage.setItem(cartStorageKey, JSON.stringify(cart));
         location.href = 'cart.html';
     };
 }

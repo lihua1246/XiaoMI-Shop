@@ -5,12 +5,13 @@ var cartHeader = document.getElementById('cartHeader');
 var cartEmpty = document.getElementById('cartEmpty');
 var cartFooter = document.querySelector('.cart-footer');
 var checkoutBtn = document.getElementById('checkoutBtn');
+var cartStorageKey = 'xiaomiCartV2';
 
 function readCart() {
     var savedCart;
 
     try {
-        savedCart = JSON.parse(localStorage.getItem('xiaomiCart') || '[]');
+        savedCart = JSON.parse(localStorage.getItem(cartStorageKey) || '[]');
     } catch (error) {
         savedCart = [];
     }
@@ -44,7 +45,7 @@ function readCart() {
 var cart = readCart();
 
 function saveCart() {
-    localStorage.setItem('xiaomiCart', JSON.stringify(cart));
+    localStorage.setItem(cartStorageKey, JSON.stringify(cart));
 }
 
 function updateTotal() {
