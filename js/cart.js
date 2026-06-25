@@ -70,7 +70,7 @@ function createCartItem(product, index) {
             '<span class="cart-product-info">' +
                 '<strong class="cart-product-name">' + product.name + '</strong>' +
                 '<span class="cart-product-desc">' + product.description + '</span>' +
-                '<button type="button" class="remove-btn">删除</button>' +
+                '' +
             '</span>' +
         '</span>' +
         '<span class="cart-col-price"><span class="cart-price">¥' + product.price + '</span></span>' +
@@ -122,9 +122,6 @@ if (cartList) {
             if (cart[index].quantity > 1) {
                 cart[index].quantity--;
             }
-        } else if (event.target.classList.contains('remove-btn')) {
-            cart.splice(index, 1);
-        } else {
             return;
         }
 
